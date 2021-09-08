@@ -70,3 +70,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+# Purchased Assets from store
+/[Aa]ssets/Shapes*
+/[Aa]ssets/Rewired*
+
+
