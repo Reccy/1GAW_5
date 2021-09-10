@@ -265,6 +265,36 @@ MeshRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &613105777803953623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5816245335749515521}
+  m_Layer: 0
+  m_Name: BarkTextSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5816245335749515521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613105777803953623}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.529, z: -0.065}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3885296603844565585}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &673529825677816786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,6 +2354,8 @@ MonoBehaviour:
   - {fileID: 5773692542648286208}
   m_showBarking:
   - {fileID: 6007549787516559143}
+  m_barkTextPrefab: {fileID: 4780175072484915190, guid: 4e7b44c84398c0e418dc826dab75f423, type: 3}
+  m_barkTextSpawnPosition: {fileID: 5816245335749515521}
   m_barkPitchRandomRange: 0.3
 --- !u!114 &4406596958760044920
 MonoBehaviour:
@@ -3045,7 +3077,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7283674716737064176}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.741, z: 0}
+  m_LocalPosition: {x: 0, y: -0.822, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2156910761943061437}
@@ -3085,7 +3117,7 @@ MonoBehaviour:
   angUnitInput: 1
   angRadiansStart: 6.2831855
   angRadiansEnd: 0
-  radius: 0.25
+  radius: 0.54
   radiusSpace: 0
   thickness: 0.1
   thicknessSpace: 0
@@ -3620,6 +3652,7 @@ Transform:
   - {fileID: 3142630970070645709}
   - {fileID: 4631132250158471172}
   - {fileID: 2156910761943061437}
+  - {fileID: 5816245335749515521}
   m_Father: {fileID: 1024794102268990352}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

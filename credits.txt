@@ -4,6 +4,9 @@ Assets used (Paid):
 Shaped by Freya Holmer (https://assetstore.unity.com/packages/tools/particles-effects/shapes-173167)
 Rewired by Guavaman Enterprises (https://assetstore.unity.com/packages/tools/utilities/rewired-21676)
 
+Assets used (Free License NON COMMERCIAL USE ONLY):
+https://www.1001freefonts.com/cute-animals.font
+
 Assets used (Free):
 Grass Footstep by swuing: https://freesound.org/s/38874/
 Birds Loop by maarten91: https://freesound.org/people/maarten91/sounds/468448/

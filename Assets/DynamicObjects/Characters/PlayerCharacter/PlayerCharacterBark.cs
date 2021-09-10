@@ -10,6 +10,8 @@ public class PlayerCharacterBark : MonoBehaviour
     [SerializeField] private AudioSource m_barkAudio;
     [SerializeField] private GameObject[] m_showNotBarking;
     [SerializeField] private GameObject[] m_showBarking;
+    [SerializeField] private GameObject m_barkTextPrefab;
+    [SerializeField] private Transform m_barkTextSpawnPosition;
 
     private float m_originalPitch;
 
@@ -40,6 +42,9 @@ public class PlayerCharacterBark : MonoBehaviour
 
         m_barkAudio.pitch = m_originalPitch + Random.Range(0, m_barkPitchRandomRange);
         m_barkAudio.Play();
+
+        GameObject barkText = Instantiate(m_barkTextPrefab);
+        barkText.transform.position = m_barkTextSpawnPosition.position;
 
         yield return new WaitUntil(() => !m_barkAudio.isPlaying);
 
