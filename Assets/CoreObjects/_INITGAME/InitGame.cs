@@ -29,12 +29,12 @@ public class InitGame : MonoBehaviour
         if (IsInitScene)
         {
             Log("Loading First In-Game Scene");
-            SceneManager.LoadScene(FIRST_SCENE_INDEX);
+            SceneManager.LoadScene(FIRST_SCENE_INDEX, LoadSceneMode.Additive);
         }
         else
         {
             Log("Loading Init Scene");
-            SceneManager.LoadScene(INIT_GAME_INDEX);
+            SceneManager.LoadScene(INIT_GAME_INDEX, LoadSceneMode.Additive);
         }
 
         FinishInit();

@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private static GameManager m_instance;
+    public static GameManager Instance => m_instance;
+
+    private Rewired.InputManager m_inputManager;
+    public Rewired.InputManager InputManager => m_inputManager;
+
+    private void Awake()
     {
-        
+        if (m_instance != null)
+        {
+            Debug.LogError("Another GameManager instance was just instantiated!", gameObject);
+
+            return;
+        }
+
+        Init();
+
+        DontDestroyOnLoad(gameObject);
+        m_instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Init()
     {
-        
+        m_inputManager = GetComponentInChildren<Rewired.InputManager>();
     }
 }
