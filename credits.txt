@@ -1,0 +1,11 @@
+Game by Aaron Meaney
+
+Assets used (Paid):
+Shaped by Freya Holmer (https://assetstore.unity.com/packages/tools/particles-effects/shapes-173167)
+Rewired by Guavaman Enterprises (https://assetstore.unity.com/packages/tools/utilities/rewired-21676)
+
+Assets used (Free):
+Grass Footstep by swuing: https://freesound.org/s/38874/
+Birds Loop by maarten91: https://freesound.org/people/maarten91/sounds/468448/
+Wind Loop by Nox_Sound: https://freesound.org/people/Nox_Sound/sounds/506911/
+Dog Bark by michael_grinnell: https://freesound.org/people/michael_grinnell/sounds/464400/

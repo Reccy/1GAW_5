@@ -10,8 +10,6 @@ public class TongueAnimRandomCycle : MonoBehaviour
 
         float cycleOffset = Random.Range(0.0f, 1.0f);
 
-        Debug.Log($"Cycle Offset {cycleOffset}");
-
         m_animator.SetFloat("CycleOffset", cycleOffset);
     }
 }

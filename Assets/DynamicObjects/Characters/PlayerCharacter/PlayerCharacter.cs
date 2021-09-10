@@ -7,6 +7,7 @@ public class PlayerCharacter : MonoBehaviour
 
     const int PLAYER_ID = 0;
     private Player m_player;
+    
     private CharacterMover m_characterMover;
 
     private void Start()

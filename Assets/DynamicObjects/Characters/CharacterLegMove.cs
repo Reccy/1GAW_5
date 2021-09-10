@@ -19,6 +19,14 @@ public class CharacterLegMove : MonoBehaviour
     private float m_currentAmplitude = 0;
     private float m_offset = 0;
 
+    private bool m_leftFootDownCalled = false;
+    private bool m_rightFootDownCalled = false;
+
+    public delegate void OnLeftFootDownEvent();
+    public delegate void OnRightFootDownEvent();
+    public event OnLeftFootDownEvent OnLeftFootDown;
+    public event OnRightFootDownEvent OnRightFootDown;
+
     private void Awake()
     {
         m_leftLegOrigin = m_leftLeg.localPosition;
@@ -51,5 +59,29 @@ public class CharacterLegMove : MonoBehaviour
 
         m_leftLeg.localPosition = m_leftLegOrigin + Vector3.up * leftZ;
         m_rightLeg.localPosition = m_rightLegOrigin + Vector3.up * rightZ;
+
+        if (Vector3.Distance(m_leftLeg.localPosition, m_leftLegOrigin) < 0.1f && !m_leftFootDownCalled)
+        {
+            if (OnLeftFootDown != null)
+                OnLeftFootDown();
+
+            m_leftFootDownCalled = true;
+        }
+        else if (Vector3.Distance(m_leftLeg.localPosition, m_leftLegOrigin) >= 0.1f)
+        {
+            m_leftFootDownCalled = false;
+        }
+
+        if (Vector3.Distance(m_rightLeg.localPosition, m_rightLegOrigin) < 0.1f && !m_rightFootDownCalled)
+        {
+            if (OnRightFootDown != null)
+                OnRightFootDown();
+
+            m_rightFootDownCalled = true;
+        }
+        else if (Vector3.Distance(m_rightLeg.localPosition, m_rightLegOrigin) >= 0.1f)
+        {
+            m_rightFootDownCalled = false;
+        }
     }
 }
