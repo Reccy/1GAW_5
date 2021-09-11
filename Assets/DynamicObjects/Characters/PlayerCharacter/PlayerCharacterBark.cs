@@ -22,6 +22,9 @@ public class PlayerCharacterBark : MonoBehaviour
 
     private float m_currentBarkBufferSeconds;
 
+    public delegate void OnBarkEvent(Vector3 barkOriginWorld);
+    public OnBarkEvent OnBark;
+
     private void Start()
     {
         m_player = ReInput.players.GetPlayer(PLAYER_ID);
@@ -54,6 +57,9 @@ public class PlayerCharacterBark : MonoBehaviour
 
         GameObject barkText = Instantiate(m_barkTextPrefab);
         barkText.transform.position = m_barkTextSpawnPosition.position;
+
+        if (OnBark != null)
+            OnBark(transform.position);
 
         yield return new WaitUntil(() => !m_barkAudio.isPlaying);
 
