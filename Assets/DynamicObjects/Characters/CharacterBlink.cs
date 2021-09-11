@@ -20,6 +20,13 @@ public class CharacterBlink : MonoBehaviour
     private float m_currentInterval;
     private bool m_isBlinking;
 
+    private bool m_blinkingEnabled = true;
+    public bool BlinkingEnabled
+    {
+        get => m_blinkingEnabled;
+        set => m_blinkingEnabled = value;
+    }
+
     private void Awake()
     {
         if (m_blinkIntervalMin >= m_blinkIntervalMax)
@@ -34,6 +41,12 @@ public class CharacterBlink : MonoBehaviour
 
     private void Update()
     {
+        if (!m_blinkingEnabled)
+        {
+            OpenEyes();
+            return;
+        }
+
         m_currentInterval -= Time.deltaTime;
         
         if (m_currentInterval <= 0 && !m_isBlinking)

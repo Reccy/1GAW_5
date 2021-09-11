@@ -2,27 +2,22 @@ using UnityEngine;
 
 public class CharacterPupilLook : MonoBehaviour
 {
-    [SerializeField] private CharacterMover m_mover;
     [SerializeField] private float m_radius;
     [SerializeField] private float m_reactionSpeed = 2.0f;
-    [SerializeField] private float m_minimumSpeed = 0.05f;
+    [SerializeField] private float m_minimumMagnitude = 0.05f;
 
     private Vector3 m_origin;
-    private Vector3 m_movement;
+
+    private Vector3 m_lookDir;
+    public Vector3 LookDir
+    {
+        get => m_lookDir;
+        set => m_lookDir = value;
+    }
 
     private void Awake()
     {
         m_origin = transform.localPosition;
-    }
-
-    private void OnEnable()
-    {
-        m_mover.OnPreMove += OnPreMove;
-    }
-
-    private void OnDisable()
-    {
-        m_mover.OnPreMove -= OnPreMove;
     }
 
     private void Update()
@@ -31,13 +26,11 @@ public class CharacterPupilLook : MonoBehaviour
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, Time.deltaTime * m_reactionSpeed);
     }
 
-    private void OnPreMove(Vector3 movement) => m_movement = movement;
-
     private Vector3 OffsetDir()
     {
-        if (m_movement.magnitude < m_minimumSpeed)
+        if (m_lookDir.magnitude < m_minimumMagnitude)
             return Vector3.zero;
 
-        return new Vector3(m_movement.x, m_movement.z, 0).normalized;
+        return new Vector3(m_lookDir.x, m_lookDir.z, 0).normalized;
     }
 }

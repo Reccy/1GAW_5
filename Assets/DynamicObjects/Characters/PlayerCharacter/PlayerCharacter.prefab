@@ -2149,10 +2149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d89ea5caa2d2514cbeb51f36731aaa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_mover: {fileID: 4406596958760044920}
   m_radius: 0.04
   m_reactionSpeed: 0.25
-  m_minimumSpeed: 0.05
+  m_minimumMagnitude: 0.05
 --- !u!1 &5266933323575401997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,6 +2336,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 40
+  m_leftPupilLook: {fileID: 2078178761}
+  m_rightPupilLook: {fileID: 1573614784}
 --- !u!114 &3749708635735851271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2357,6 +2358,7 @@ MonoBehaviour:
   - {fileID: 6007549787516559143}
   m_barkTextPrefab: {fileID: 4780175072484915190, guid: 4e7b44c84398c0e418dc826dab75f423, type: 3}
   m_barkTextSpawnPosition: {fileID: 5816245335749515521}
+  m_barkBufferSeconds: 0.2
   m_barkPitchRandomRange: 0.3
 --- !u!114 &4406596958760044920
 MonoBehaviour:
@@ -2579,10 +2581,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d89ea5caa2d2514cbeb51f36731aaa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_mover: {fileID: 4406596958760044920}
   m_radius: 0.05
   m_reactionSpeed: 0.25
-  m_minimumSpeed: 0.05
+  m_minimumMagnitude: 0.05
 --- !u!1 &5773692542648286208
 GameObject:
   m_ObjectHideFlags: 0
