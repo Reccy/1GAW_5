@@ -1,24 +1,22 @@
 using UnityEngine;
-using Rewired;
 
-public class PlayerCharacter : MonoBehaviour
+public class Sheep : MonoBehaviour
 {
     [SerializeField] private float m_speed = 40.0f;
 
-    const int PLAYER_ID = 0;
-    private Player m_player;
-    
     private CharacterMover m_characterMover;
 
     private void Start()
     {
         m_characterMover = GetComponentInChildren<CharacterMover>();
-        m_player = ReInput.players.GetPlayer(PLAYER_ID);
     }
 
     private void FixedUpdate()
     {
-        Vector3 movement = new Vector3(m_player.GetAxis("Move Horizontal"), 0, m_player.GetAxis("Move Vertical"));
+        float x = Mathf.Sin(Time.timeSinceLevelLoad * 5);
+        float y = Mathf.Cos(Time.timeSinceLevelLoad * 5);
+
+        Vector3 movement = new Vector3(x, 0, y);
         m_characterMover.Move(movement.normalized * m_speed);
     }
 }
