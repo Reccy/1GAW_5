@@ -34,6 +34,20 @@ public class Sheep : MonoBehaviour
 
     [SerializeField] private CharacterBlink m_blinking;
 
+    [SerializeField] private GameObject m_cheeks;
+
+    [SerializeField] private Animator m_anim;
+    private const string IDLE_STATE_ANIM = "SheepIdle";
+    private const string JUMP_STATE_ANIM = "SheepJump";
+    private const string SPOOKED_STATE_ANIM = "SheepSpooked";
+
+    public enum SheepState { GRAZING, RUNNING, VIBING }
+    private SheepState m_state = SheepState.GRAZING;
+
+    public bool IsGrazing => m_state == SheepState.GRAZING;
+    public bool IsRunning => m_state == SheepState.RUNNING;
+    public bool IsVibing => m_state == SheepState.VIBING;
+
     private void Awake()
     {
         m_barker = FindObjectOfType<PlayerCharacterBark>();
@@ -68,7 +82,12 @@ public class Sheep : MonoBehaviour
         if (barkDistance > m_barkDetectRange)
             return;
 
+        if (IsVibing)
+            return;
+
+        m_state = SheepState.RUNNING;
         m_moveDir = (transform.position - barkOrigin).normalized;
+        m_anim.Play(JUMP_STATE_ANIM);
     }
 
     private void OnPostMove(Vector3 movement)
@@ -78,7 +97,7 @@ public class Sheep : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (m_moveDir == Vector3.zero)
+        if (IsGrazing)
         {
             if (Vector3.Distance(transform.position, m_playerTransform.position) < m_barkDetectRange)
             {
@@ -97,15 +116,36 @@ public class Sheep : MonoBehaviour
                 m_rightPupilLook.LookDir = Vector3.zero;
             }
 
+            m_characterMover.Move(m_moveDir);
+
             return;
         }
 
-        BecomeUnspooked();
+        if (IsRunning)
+        {
+            BecomeUnspooked();
 
-        m_characterMover.Move(m_moveDir * m_speed);
+            m_characterMover.Move(m_moveDir * m_speed);
 
-        m_leftPupilLook.LookDir = m_eyeMovement;
-        m_rightPupilLook.LookDir = m_eyeMovement;
+            m_leftPupilLook.LookDir = m_eyeMovement;
+            m_rightPupilLook.LookDir = m_eyeMovement;
+
+            return;
+        }
+
+        if (IsVibing)
+        {
+            BecomeUnspooked();
+
+            m_speed = Mathf.Max(m_speed - (Time.deltaTime * 150), 0);
+
+            m_characterMover.Move(m_moveDir * m_speed);
+
+            m_leftPupilLook.LookDir = m_eyeMovement;
+            m_rightPupilLook.LookDir = m_eyeMovement;
+
+            return;
+        }
     }
 
     private void BecomeSpooked()
@@ -119,6 +159,8 @@ public class Sheep : MonoBehaviour
         m_sweat.SetActive(true);
 
         m_blinking.BlinkingEnabled = false;
+
+        m_anim.Play(SPOOKED_STATE_ANIM);
     }
 
     private void BecomeUnspooked()
@@ -132,11 +174,50 @@ public class Sheep : MonoBehaviour
         m_mouth.AngRadiansEnd = m_mouthAngleEndNormal;
 
         m_blinking.BlinkingEnabled = true;
+
+        if (IsGrazing)
+            m_anim.Play(IDLE_STATE_ANIM);
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, m_barkDetectRange);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Obstacle obstacle = collision.gameObject.GetComponentInChildren<Obstacle>();
+
+        if (obstacle == null)
+            return;
+
+        if (IsVibing)
+            return;
+
+        StartGrazing();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Pen pen = other.gameObject.GetComponentInParent<Pen>();
+
+        if (pen == null)
+            return;
+
+        StartVibing();
+    }
+
+    private void StartGrazing()
+    {
+        m_state = SheepState.GRAZING;
+        m_moveDir = Vector3.zero;
+    }
+
+    private void StartVibing()
+    {
+        m_state = SheepState.VIBING;
+
+        m_cheeks.SetActive(true);
     }
 }

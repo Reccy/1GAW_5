@@ -46,5 +46,7 @@ public class PlayerCharacter : MonoBehaviour
 
         m_leftPupilLook.LookDir = m_eyeMovement;
         m_rightPupilLook.LookDir = m_eyeMovement;
+            
+        return;
     }
 }

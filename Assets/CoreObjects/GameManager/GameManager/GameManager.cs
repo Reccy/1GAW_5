@@ -8,6 +8,12 @@ public class GameManager : MonoBehaviour
     private Rewired.InputManager m_inputManager;
     public Rewired.InputManager InputManager => m_inputManager;
 
+    private Level m_currentLevel;
+    public Level CurrentLevel {
+        get => m_currentLevel;
+        set => m_currentLevel = value;
+    }
+
     private void Awake()
     {
         if (m_instance != null)
