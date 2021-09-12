@@ -74,7 +74,7 @@ public class Footstep : MonoBehaviour
         else if (m_hideCoroutine == null)
         {
             m_hidden = true;
-            m_hideCoroutine = StartCoroutine(SlowHide());
+            //m_hideCoroutine = StartCoroutine(SlowHide());
         }
     }
 

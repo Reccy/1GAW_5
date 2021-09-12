@@ -34,6 +34,17 @@ public class FootstepGenerator : MonoBehaviour
             collectionCheck: false,
             defaultCapacity: m_maxFootsteps,
             maxSize: m_maxFootsteps);
+
+        // Preload footsteps into memory
+        for (int i = 0; i < m_maxFootsteps; i++)
+        {
+            m_footsteps[i] = m_footstepPool.Get();
+        }
+
+        for (int i = 0; i < m_maxFootsteps; i++)
+        {
+            m_footstepPool.Release(m_footsteps[i]);
+        }
     }
 
     public void DrawFootstepLeft()

@@ -2915,7 +2915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a224dce5542384bad893f2b512c024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxFootsteps: 512
+  m_maxFootsteps: 16
   m_footstepPrefab: {fileID: 1049173676082328818, guid: 84c489bcde5ae19499ca2542a9d9ac3c, type: 3}
   m_leftFootstepGenLocal: {fileID: 8458815308939658570}
   m_rightFootstepGenLocal: {fileID: 7533118406884625737}
