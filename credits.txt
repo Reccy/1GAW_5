@@ -5,7 +5,8 @@ Shaped by Freya Holmer (https://assetstore.unity.com/packages/tools/particles-ef
 Rewired by Guavaman Enterprises (https://assetstore.unity.com/packages/tools/utilities/rewired-21676)
 
 Assets used (Free License NON COMMERCIAL USE ONLY):
-https://www.1001freefonts.com/cute-animals.font
+Cute Animals by Md Shohail Bhuian: https://www.1001freefonts.com/cute-animals.font
+Cuteness by Vanessa Bays: https://www.1001freefonts.com/cuteness.font
 
 Assets used (Free):
 Grass Footstep by swuing: https://freesound.org/s/38874/
